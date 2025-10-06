@@ -25,7 +25,6 @@ public class BallPositionPrediction implements UpdatableObject {
             if (storeVelocity) {
                 ballOriginalVelocity = ball.getVelocity();
                 storeVelocity = false;
-                System.out.println("Store");
             }
             calculatePrediction(deltaTime);
         } else {
