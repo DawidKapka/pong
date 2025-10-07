@@ -24,4 +24,8 @@ public class Scoreboard implements RenderableObject {
     public void addPoint() {
         points++;
     }
+
+    public int getScore() {
+        return points;
+    }
 }

@@ -26,7 +26,7 @@ public class Main {
     }
 
     private static void setupFrame(GameEngine gameEngine) {
-        final Frame frame = new Frame("Pong");
+        final Frame frame = new Frame("Retro Pong");
         frame.add(gameEngine);
         frame.pack();
         frame.setResizable(false);

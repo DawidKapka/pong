@@ -1,10 +1,6 @@
-package com.dk.pong;
+package com.dk.pong.object;
 
-import com.dk.pong.object.Ball;
-import com.dk.pong.object.infra.RenderableObject;
 import com.dk.pong.object.infra.UpdatableObject;
-
-import java.awt.*;
 
 import static com.dk.pong.Main.WINDOW_WIDTH;
 import static java.awt.image.ImageObserver.WIDTH;

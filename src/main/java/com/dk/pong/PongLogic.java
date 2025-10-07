@@ -2,8 +2,11 @@ package com.dk.pong;
 
 import com.dk.pong.infra.GameLogic;
 import com.dk.pong.infra.Scene;
+import com.dk.pong.object.VictoryScreen;
 import com.dk.pong.scene.GameLevelScene;
+import com.dk.pong.scene.GameOverScene;
 import com.dk.pong.scene.StartScreenScene;
+import com.dk.pong.scene.VictoryScene;
 
 import java.awt.*;
 import java.awt.event.KeyAdapter;
@@ -34,7 +37,21 @@ public class PongLogic implements GameLogic {
 
     private void onStartGame() {
         final GameLevelScene gameLevelScene = new GameLevelScene();
+        gameLevelScene.registerCallback(GameLevelScene.PLAYER_WIN_CALLBACK, () -> onPlayerWin(gameLevelScene.getScore()));
+        gameLevelScene.registerCallback(GameLevelScene.PLAYER_LOSS_CALLBACK, () -> onPlayerLoss(gameLevelScene.getScore()));
         setCurrentScene(gameLevelScene);
+    }
+
+    private void onPlayerLoss(int score) {
+        final GameOverScene gameOverScene = new GameOverScene(score);
+        gameOverScene.registerCallback(GameOverScene.RESTART_CALLBACK, this::onStartGame);
+        setCurrentScene(gameOverScene);
+    }
+
+    private void onPlayerWin(int score) {
+        final VictoryScene victoryScene = new VictoryScene(score);
+        victoryScene.registerCallback(VictoryScreen.RESTART_CALLBACK, this::onStartGame);
+        setCurrentScene(victoryScene);
     }
 
     @Override

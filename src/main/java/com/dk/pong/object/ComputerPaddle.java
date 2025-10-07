@@ -1,6 +1,5 @@
 package com.dk.pong.object;
 
-import com.dk.pong.BallPositionPrediction;
 import com.dk.pong.object.infra.CollidingObject;
 import com.dk.pong.object.infra.RenderableObject;
 import com.dk.pong.object.infra.UpdatableObject;
@@ -12,7 +11,7 @@ import static com.dk.pong.Main.WINDOW_WIDTH;
 public class ComputerPaddle implements RenderableObject, CollidingObject, UpdatableObject {
     private static final int WIDTH = 128;
     private static final int HEIGHT = 16;
-    private static final double MOVEMENT_SPEED = 260.0;
+    private static final double MOVEMENT_SPEED = 300.0;
     private double x = WINDOW_WIDTH / 2.0 - WIDTH / 2.0;
     private final int y = 16;
     private double velocity = 0;

@@ -11,7 +11,9 @@ import static com.dk.pong.Main.WINDOW_HEIGHT;
 import static com.dk.pong.Main.WINDOW_WIDTH;
 
 public class Ball extends CallbackObject implements RenderableObject, UpdatableObject, CollidingObject {
-    public static final String PLAYER_POINT = "playerPoint";
+    public static final String PLAYER_POINT_CALLBACK = "playerPoint";
+    public static final String PLAYER_LOSS_CALLBACK = "playerLoss";
+    public static final String PLAYER_WIN_CALLBACK = "playerWin";
     private static final int HEIGHT = 16;
     private static final int WIDTH = 16;
     private static final double SPEED = 300.0;
@@ -19,7 +21,6 @@ public class Ball extends CallbackObject implements RenderableObject, UpdatableO
     private double y = (WINDOW_HEIGHT - 16) / 2.0;
     private BallDirection direction = BallDirection.DOWN;
     private double velocityY = 0.0;
-    private boolean started = false;
     private double timeSinceStart = 0f;
 
     @Override
@@ -73,13 +74,14 @@ public class Ball extends CallbackObject implements RenderableObject, UpdatableO
     }
 
     public void playerPoint() {
-        executeCallback(PLAYER_POINT);
+        executeCallback(PLAYER_POINT_CALLBACK);
     }
 
     private void checkBottomCollision() {
         if (isCollidingWithBottom()) {
             y = WINDOW_HEIGHT - HEIGHT;
             velocityY = 0;
+            executeCallback(PLAYER_LOSS_CALLBACK);
         }
     }
 
@@ -87,6 +89,7 @@ public class Ball extends CallbackObject implements RenderableObject, UpdatableO
         if (isCollidingWithCeiling()) {
             y = 0;
             velocityY = 0;
+            executeCallback(PLAYER_WIN_CALLBACK);
         }
     }
 

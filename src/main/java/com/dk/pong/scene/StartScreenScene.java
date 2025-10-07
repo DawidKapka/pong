@@ -9,7 +9,7 @@ public class StartScreenScene extends Scene {
     @Override
     protected void setupObjects() {
         final StartScreen startScreen = new StartScreen();
-        startScreen.registerCallback(StartScreen.START_CALLBACK, () -> callCallback(START_CALLBACK));
+        startScreen.registerCallback(StartScreen.START_CALLBACK, () -> executeCallback(START_CALLBACK));
         objects.add(startScreen);
     }
 

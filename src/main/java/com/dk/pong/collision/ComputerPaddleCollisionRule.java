@@ -1,4 +1,4 @@
-package com.dk.pong;
+package com.dk.pong.collision;
 
 import com.dk.pong.infra.CollisionRule;
 import com.dk.pong.object.Ball;

@@ -21,7 +21,7 @@ public abstract class Scene {
         callbacks.put(name, callback);
     }
 
-    public void callCallback(String name) {
+    public void executeCallback(String name) {
         if (callbacks.containsKey(name)) {
             callbacks.get(name).run();
         } else {
